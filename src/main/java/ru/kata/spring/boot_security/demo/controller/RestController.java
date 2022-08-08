@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
 import ru.kata.spring.boot_security.Exception.UserException;
+
 import java.util.List;
 
 @RequestMapping("/api")
@@ -13,7 +14,7 @@ public class RestController {
 
     private UserService userService;
 
-    public RestController(UserService userService){
+    public RestController(UserService userService) {
         this.userService = userService;
     }
 
@@ -35,22 +36,22 @@ public class RestController {
     }
 
     @PostMapping("/users")
-    public User addNewUser(@RequestBody User user, @RequestBody String[] setOfRoles){
+    public User addNewUser(@RequestBody User user, @RequestBody String[] setOfRoles) {
         userService.saveUser(user, setOfRoles);
         return user;
     }
 
     @PutMapping("/users/{id}")
-    public User updateUser(@PathVariable("id") Long id, @RequestBody User user, @RequestBody String[] setOfRoles){
+    public User updateUser(@PathVariable("id") Long id, @RequestBody User user, @RequestBody String[] setOfRoles) {
         User oldUser = userService.findById(id);
         userService.updateUser(oldUser, user, setOfRoles);
         return user;
     }
 
     @DeleteMapping("/users/{id}")
-    public String deleteUser(@PathVariable Long id){
+    public String deleteUser(@PathVariable Long id) {
         User user = userService.findById(id);
-        if(user==null){
+        if (user == null) {
             throw new UserException("There is no user with id = "
                     + id + " in database");
         }

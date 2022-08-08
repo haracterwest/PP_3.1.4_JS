@@ -14,14 +14,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
- *  @Configuration - используется для классов, которые определяют bean-компоненты;
- *  @EnableWebSecurity - маркерная аннотация для обеспечения работы аутентификации;
- *  @Qualifier - используется для устранения случаев, когда необходимо автоматически подключить более одного bean-компонента одного типа;
- *  @Autowired - отмечает конструктор, поле или метод как требующий автозаполнения инъекцией зависимости;
- *  @Bean - идентификатор бина;
- *  @Override - перед объявлением метода означает, что метод переопределяет объявление метода в базовом классе;
- *
- *  конфиги спринг-секьюрити
+ * @Configuration - используется для классов, которые определяют bean-компоненты;
+ * @EnableWebSecurity - маркерная аннотация для обеспечения работы аутентификации;
+ * @Qualifier - используется для устранения случаев, когда необходимо автоматически подключить более одного bean-компонента одного типа;
+ * @Autowired - отмечает конструктор, поле или метод как требующий автозаполнения инъекцией зависимости;
+ * @Bean - идентификатор бина;
+ * @Override - перед объявлением метода означает, что метод переопределяет объявление метода в базовом классе;
+ * <p>
+ * конфиги спринг-секьюрити
  */
 
 
@@ -51,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //настройка аутентификации
     @Override
-    public void configure(AuthenticationManagerBuilder auth)  {
+    public void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
 

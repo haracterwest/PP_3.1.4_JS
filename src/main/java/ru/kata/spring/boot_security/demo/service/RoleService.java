@@ -12,7 +12,7 @@ import java.util.List;
 
 
 /**
- *  Service - аннотация, объявляющая, что этот класс представляет собой сервис – компонент сервис-слоя.
+ * Service - аннотация, объявляющая, что этот класс представляет собой сервис – компонент сервис-слоя.
  */
 
 @Service
@@ -20,7 +20,7 @@ import java.util.List;
 //класс, формирующий роли
 public class RoleService {
 
-     private final RolesRepository rolesRepository;
+    private final RolesRepository rolesRepository;
 
     @Autowired
     public RoleService(RolesRepository rolesRepository) {
@@ -28,11 +28,8 @@ public class RoleService {
     }
 
     @Transactional
-    public List <Role> getRoles() {
-//        ArrayList<String> list = new ArrayList<>();     //создание списка
-//        list.add("ROLE_ADMIN");                         //добавление роли ROLE_ADMIN
-//        list.add("ROLE_USER");
-// Lisдобавление роли ROLE_USER
-        return rolesRepository.findAll();                                    //возврат списка
+    public List<Role> getRoles() {
+
+        return rolesRepository.findAll();
     }
 }

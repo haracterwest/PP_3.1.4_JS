@@ -12,7 +12,9 @@ const userFetchService = {
         'Content-Type': 'application/json',
         'Referer': null
     },
-     bodyAdd : async function(user) {return {'method': 'POST', 'headers': this.head, 'body': user}},
+    bodyAdd: async function (user) {
+        return {'method': 'POST', 'headers': this.head, 'body': user}
+    },
     findAllUsers: async () => await fetch('api/users'),
     findOneUser: async (id) => await fetch(`api/users/${id}`),
     addNewUser: async (user) => await fetch('api/users', {
@@ -27,10 +29,6 @@ const userFetchService = {
     }),
     deleteUser: async (id) => await fetch(`api/users/${id}`, {method: 'DELETE', headers: userFetchService.head})
 }
-
-
-
-
 
 
 /// таблица  всех юзеров-----------------------------
@@ -52,7 +50,7 @@ async function getTableWithUsers() {
         .then(users => {
             users.forEach(user => {
                 let userRoles = "";
-                for(let i = 0; i < user.roles.length; i++) {
+                for (let i = 0; i < user.roles.length; i++) {
                     userRoles += user.roles[i].role;
                     userRoles += " ";
                 }
@@ -79,10 +77,7 @@ async function getTableWithUsers() {
         })
 
 
-
-
 /// логика кнопок EDIT DELETE -----------------------------
-
 
     $("#mainTableWithUsers").find('button').on('click', (event) => {
         let defaultModal = $('#someDefaultModal');
@@ -126,7 +121,7 @@ async function getNewUserForm() {
 
     button2.on('click', () => {
 
-             getTableWithUsers();
+            getTableWithUsers();
 
             table.style.display = '';
         }
@@ -135,10 +130,7 @@ async function getNewUserForm() {
 }
 
 
-
-
 // ЛОГИКА МОДАЛЬНЫХ ОКОН EDIT, DELETE ---------------------------------
-
 
 
 async function getDefaultModal() {
@@ -209,10 +201,9 @@ async function editUser(modal, id) {
         let roles = modal.find('select[name=roles]').val();
 
 
-
         let data = {
             id: id,
-           name: name,
+            name: name,
             password: password,
             email: email,
             roles: roles
@@ -236,9 +227,6 @@ async function editUser(modal, id) {
 }
 
 
-
-
-
 // DELETE USER ---------------------------------
 
 async function deleteUser(modal, id) {
@@ -249,7 +237,6 @@ async function deleteUser(modal, id) {
     let closeButton = `<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>`
     modal.find('.modal-footer').append(closeButton);
 }
-
 
 
 // NEW USER ---------------------------------

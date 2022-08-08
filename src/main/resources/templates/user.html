@@ -20,19 +20,16 @@
 
     <title>User panel</title>
 </head>
-
 <body>
 
 <!-- Навигация  -->
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link"th:utext="${user.getEmail()}">with roles: </a>
+                <a class="nav-link" th:utext="${user.getEmail()}">with roles: </a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link">with roles: </a>
@@ -40,19 +37,15 @@
             <li class="nav-item active">
                 <a class="nav-link" th:utext="${user.getRolesToString()}">Notifications</a>
             </li>
-
             <li class="nav-item dropdown">
-
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </li>
-
         </ul>
         <form class="nav-item active">
-
             <a class="btn btn-outline-light" href="/logout">Logout</a>
         </form>
     </div>
@@ -62,38 +55,24 @@
 <!-- Разметка  -->
 
 <div class="row" style="">
-
-    <div class="  col-md-2"  style="height: 100px;">
+    <div class="  col-md-2" style="height: 100px;">
         <ul class="nav flex-column nav-pills ">
             <li class="nav-item">
-                <div style="margin-top: 35px;" >
-                    <a class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')"  href="/admin">Admin</a>
+                <div style="margin-top: 35px;">
+                    <a class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')" href="/admin">Admin</a>
                 </div>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link active" href="/user">User</a>
             </li>
         </ul>
-
-
-
     </div>
-
-
     <div class="col-md-10">
         <br>
-
-
         <h1>User information-page</h1>
-
-
-
-
         <div style="height: 68px;">
             <br>
             <h5>About user</h5></div>
-
         <table class="table table-striped">
             <thead>
             <tr>
@@ -101,40 +80,22 @@
                 <th>Username</th>
                 <th>Email</th>
                 <th>Roles</th>
-
             </tr>
             </thead>
-
             <tbody>
             <tr>
             <tr th:each="usr : ${user}">
                 <td><a th:utext="${usr.getId()}">Id</a></td>
-
                 <td th:utext="${usr.getName()}">...</td>
                 <td th:utext="${usr.getEmail()}">...</td>
                 <td th:utext="${usr.getRolesToString()}">...</td>
-
             </tr>
-
             </tbody>
         </table>
     </div>
-
-
-
-
-
-
-
 </div>
-
-
 </div>
-
-
 </div>
-
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

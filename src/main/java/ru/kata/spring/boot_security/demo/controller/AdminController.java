@@ -21,7 +21,6 @@ import java.util.List;
  * возвращаемое значение метода с именованным атрибутом модели, а затем предоставляет его веб-представлению.
  * @PathVariable - используется для обработки переменных шаблона в
  * отображении URI запроса и использовать их в качестве параметров метода.
- *
  */
 
 @Controller
@@ -64,8 +63,10 @@ public class AdminController {
         userService.saveUser(user, selectedRoles);
         return "redirect:/admin";
     }
+
     //метод контроллера, который по Get-запросу выдает юзера с определённым id
-    @GetMapping(value = "/{id}/edit")                                   //в запросе указываем значение {id}, которое связано с параметром метода ("id")
+    @GetMapping(value = "/{id}/edit")
+    //в запросе указываем значение {id}, которое связано с параметром метода ("id")
     public String edit(Model model, @PathVariable("id") Long id) {
         User user = userService.findById(id);//по значению "id" из url кладем в переменную Long id
         model.addAttribute("user", user);
@@ -84,7 +85,8 @@ public class AdminController {
     }
 
     //метод удаляет по id
-    @DeleteMapping("/{id}")                               //в запросе указываем значение {id}, которое связано с параметром метода ("id")
+    @DeleteMapping("/{id}")
+    //в запросе указываем значение {id}, которое связано с параметром метода ("id")
     public String delete(@PathVariable("id") Long id) {     //по значению "id" из url кладем в переменную Long id
         userService.deleteById(id);                         //удаляет по id
         return "redirect:/admin";                           //направляет на юрл /admin
